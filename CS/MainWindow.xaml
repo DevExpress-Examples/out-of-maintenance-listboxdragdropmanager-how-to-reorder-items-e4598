@@ -1,0 +1,27 @@
+﻿<Window x:Class="DXEditorsSample.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+	    xmlns:local="clr-namespace:DXEditorsSample"
+        Title="MainWindow" 
+        Height="350" 
+        Width="525">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<dxe:ListBoxEdit x:Name="editor1" DisplayMember="Name" AllowItemHighlighting="True">
+            <dxmvvm:Interaction.Behaviors>
+				<local:MyListBoxDragDropManager x:Name="manager1"/>
+            </dxmvvm:Interaction.Behaviors>
+		</dxe:ListBoxEdit>
+        <dxe:ListBoxEdit x:Name="editor2" Grid.Column="1" DisplayMember="Name" AllowItemHighlighting="True">
+            <dxmvvm:Interaction.Behaviors>
+				<local:MyListBoxDragDropManager x:Name="manager2"/>
+            </dxmvvm:Interaction.Behaviors>
+		</dxe:ListBoxEdit>
+	</Grid>
+</Window>
