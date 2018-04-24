@@ -39,41 +39,41 @@
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Data.v15.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Mvvm.v15.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\DevExpress.Printing.v15.1.Core.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Xpf.Core.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Xpf.Core.v15.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Xpf.Grid.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Xpf.Grid.v15.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Xpf.Grid.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Xpf.Grid.v15.1.Core.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Xpf.Grid.v15.1.Extensions, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Xpf.Grid.v15.1.Extensions.dll</HintPath>
+      
     </Reference>
     <Reference Include="DevExpress.Xpf.Printing.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
-      <HintPath>bin\Debug\DevExpress.Xpf.Printing.v15.1.dll</HintPath>
+      
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

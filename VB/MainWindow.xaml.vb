@@ -36,8 +36,14 @@ Namespace DXEditorsSample
             Persons1 = New ObservableCollection(Of Person)()
             Persons2 = New ObservableCollection(Of Person)()
             For i As Integer = 0 To 4
-                Persons1.Add(New Person With {.Id = i, .Name = "Name1_" & i})
-                Persons2.Add(New Person With {.Id = i, .Name = "Name2_" & i})
+                Persons1.Add(New Person With { _
+                    .Id = i, _
+                    .Name = "Name1_" & i _
+                })
+                Persons2.Add(New Person With { _
+                    .Id = i, _
+                    .Name = "Name2_" & i _
+                })
             Next i
             editor1.ItemsSource = Persons1
             editor2.ItemsSource = Persons2
