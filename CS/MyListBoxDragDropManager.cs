@@ -52,12 +52,13 @@ namespace DXEditorsSample {
         }
         ListBoxEditItem TargetItem;
         public override void OnDragOver(DragDropManagerBase sourceManager, UIElement source, Point pt) {
-            ListBoxDragOverEventArgs e = RaiseDragOverEvent(sourceManager, pt, DropTargetType.None);
-            DropEventIsLocked = e.Handled ? !e.AllowDrop : !AllowDrop || sourceManager.DraggingRows == null || sourceManager.DraggingRows.Count < 1;
-            if (!DropEventIsLocked) {
+	    this.dragOverSourceManager = sourceManager;
+    	    ListBoxDragOverEventArgs e = RaiseDragOverEvent(sourceManager, pt, DropTargetType.None);
+    	    DropEventIsLocked = e.Handled ? !e.AllowDrop : !AllowDrop || sourceManager.DraggingRows == null || sourceManager.DraggingRows.Count < 1;
+    	    if (!DropEventIsLocked) {
                 ProcessTargetItem(sourceManager, pt);
                 return;
-            }
+	    }
         }
         protected virtual void ProcessTargetItem(DragDropManagerBase sourceManager, Point pt) {
             TargetItem = GetVisibleHitTestElement(pt);
