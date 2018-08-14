@@ -62,6 +62,7 @@ Namespace DXEditorsSample
         End Class
         Private TargetItem As ListBoxEditItem
         Public Overrides Sub OnDragOver(ByVal sourceManager As DragDropManagerBase, ByVal source As UIElement, ByVal pt As Point)
+        Me.dragOverSourceManager = sourceManager
             Dim e As ListBoxDragOverEventArgs = RaiseDragOverEvent(sourceManager, pt, DropTargetType.None)
             DropEventIsLocked = If(e.Handled, Not e.AllowDrop, Not AllowDrop OrElse sourceManager.DraggingRows Is Nothing OrElse sourceManager.DraggingRows.Count < 1)
             If Not DropEventIsLocked Then
