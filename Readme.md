@@ -1,3 +1,10 @@
+<!-- default file list -->
+*Files to look at*:
+
+* **[MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))**
+* [MainWindow.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))
+* [MyListBoxDragDropManager.cs](./CS/MyListBoxDragDropManager.cs) (VB: [MyListBoxDragDropManager.vb](./VB/MyListBoxDragDropManager.vb))
+<!-- default file list end -->
 # ListBoxDragDropManager - How to reorder items
 
 
