@@ -32,14 +32,14 @@ Imports System.Windows.Threading
 Imports DevExpress.Xpf.Core
 
 Namespace DXEditorsSample
-    ''' <summary>
-    ''' Interaction logic for App.xaml
-    ''' </summary>
-    Partial Public Class App
-        Inherits Application
+	''' <summary>
+	''' Interaction logic for App.xaml
+	''' </summary>
+	Partial Public Class App
+		Inherits Application
 
-        Public Sub New()
+		Public Sub New()
 
-        End Sub
-    End Class
+		End Sub
+	End Class
 End Namespace

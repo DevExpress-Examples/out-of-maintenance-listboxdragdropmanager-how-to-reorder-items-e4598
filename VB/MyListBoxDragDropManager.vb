@@ -38,98 +38,98 @@ Imports System.Collections
 Imports System.ComponentModel
 
 Namespace DXEditorsSample
-    Public Class MyListBoxDragDropManager
-        Inherits ListBoxDragDropManager
+	Public Class MyListBoxDragDropManager
+		Inherits ListBoxDragDropManager
 
-        Private Class DragDropHitTestResult
-            Private privateElement As ListBoxEditItem
-            Public Property Element() As ListBoxEditItem
-                Get
-                    Return privateElement
-                End Get
-                Private Set(ByVal value As ListBoxEditItem)
-                    privateElement = value
-                End Set
-            End Property
-            Public Function CallBack(ByVal result As HitTestResult) As HitTestResultBehavior
-                Dim item As ListBoxEditItem = LayoutHelper.FindParentObject(Of ListBoxEditItem)(result.VisualHit)
-                If item IsNot Nothing Then
-                    Element = item
-                    Return HitTestResultBehavior.Stop
-                End If
-                Return HitTestResultBehavior.Continue
-            End Function
-        End Class
-        Private TargetItem As ListBoxEditItem
-        Public Overrides Sub OnDragOver(ByVal sourceManager As DragDropManagerBase, ByVal source As UIElement, ByVal pt As Point)
-        Me.dragOverSourceManager = sourceManager
-            Dim e As ListBoxDragOverEventArgs = RaiseDragOverEvent(sourceManager, pt, DropTargetType.None)
-            DropEventIsLocked = If(e.Handled, Not e.AllowDrop, Not AllowDrop OrElse sourceManager.DraggingRows Is Nothing OrElse sourceManager.DraggingRows.Count < 1)
-            If Not DropEventIsLocked Then
-                ProcessTargetItem(sourceManager, pt)
-                Return
-            End If
-        End Sub
-        Protected Overridable Sub ProcessTargetItem(ByVal sourceManager As DragDropManagerBase, ByVal pt As Point)
-            TargetItem = GetVisibleHitTestElement(pt)
-            If TargetItem Is Nothing Then
-                sourceManager.ViewInfo.DropTargetRow = Nothing
-                sourceManager.SetDropTargetType(DropTargetType.DataArea)
-                ShowDropMarker(ListBox, TableDragIndicatorPosition.None)
-                Return
-            End If
-            Dim position = Mouse.GetPosition(TargetItem)
-            Dim height As Double = TargetItem.ActualHeight
-            If position.Y < height / 2 Then
-                sourceManager.SetDropTargetType(DropTargetType.InsertRowsBefore)
-                ShowDropMarker(TargetItem, TableDragIndicatorPosition.Top)
-            Else
-                sourceManager.SetDropTargetType(DropTargetType.InsertRowsAfter)
-                ShowDropMarker(TargetItem, TableDragIndicatorPosition.Bottom)
-            End If
-            sourceManager.ViewInfo.DropTargetRow = TargetItem.Content
-        End Sub
-        Protected Overridable Function GetVisibleHitTestElement(ByVal pt As Point) As ListBoxEditItem
-            Dim result As New DragDropHitTestResult()
-            VisualTreeHelper.HitTest(ListBox, Nothing, New HitTestResultCallback(AddressOf result.CallBack), New PointHitTestParameters(pt))
-            Return result.Element
-        End Function
-        Protected Overrides Sub OnDrop(ByVal sourceManager As DragDropManagerBase, ByVal source As UIElement, ByVal pt As Point)
-            If DropEventIsLocked Then
-                Return
-            End If
-            Dim e As ListBoxDropEventArgs = RaiseDropEvent(sourceManager)
-            If Not e.Handled Then
-                If sourceManager.DraggingRows.Count > 0 AndAlso AllowDrop Then
-                    ProcessTargetItem(e.SourceManager, pt)
-                    Dim currentSource As IList = ItemsSource
-                    Dim draggedFromSource As IList = e.SourceManager.GetSource(Nothing)
-                    For Each obj As Object In e.DraggedRows
-                        If TargetItem IsNot Nothing AndAlso obj Is TargetItem.Content Then
-                            Continue For
-                        End If
-                        draggedFromSource.Remove(obj)
-                        Select Case e.SourceManager.ViewInfo.DropTargetType
-                            Case DropTargetType.DataArea
-                                currentSource.Add(obj)
-                            Case DropTargetType.InsertRowsAfter
-                                currentSource.Insert(currentSource.IndexOf(TargetItem.Content) + 1, obj)
-                            Case DropTargetType.InsertRowsBefore
-                                currentSource.Insert(Math.Max(currentSource.IndexOf(TargetItem.Content), 0), obj)
-                        End Select
-                    Next obj
-                    RaiseDroppedEvent(sourceManager, e.DraggedRows)
-                End If
-            End If
-            HideDropMarker()
-        End Sub
-        Protected Overrides ReadOnly Property ItemsSource() As IList
-            Get
-                If TypeOf ListBox.ItemsSource Is ICollectionView Then
-                    Return TryCast(DirectCast(ListBox.ItemsSource, ICollectionView).SourceCollection, IList)
-                End If
-                Return TryCast(ListBox.ItemsSource, IList)
-            End Get
-        End Property
-    End Class
+		Private Class DragDropHitTestResult
+			Private privateElement As ListBoxEditItem
+			Public Property Element() As ListBoxEditItem
+				Get
+					Return privateElement
+				End Get
+				Private Set(ByVal value As ListBoxEditItem)
+					privateElement = value
+				End Set
+			End Property
+			Public Function CallBack(ByVal result As HitTestResult) As HitTestResultBehavior
+				Dim item As ListBoxEditItem = LayoutHelper.FindParentObject(Of ListBoxEditItem)(result.VisualHit)
+				If item IsNot Nothing Then
+					Element = item
+					Return HitTestResultBehavior.Stop
+				End If
+				Return HitTestResultBehavior.Continue
+			End Function
+		End Class
+		Private TargetItem As ListBoxEditItem
+		Public Overrides Sub OnDragOver(ByVal sourceManager As DragDropManagerBase, ByVal source As UIElement, ByVal pt As Point)
+		Me.dragOverSourceManager = sourceManager
+			Dim e As ListBoxDragOverEventArgs = RaiseDragOverEvent(sourceManager, pt, DropTargetType.None)
+			DropEventIsLocked = If(e.Handled, Not e.AllowDrop, Not AllowDrop OrElse sourceManager.DraggingRows Is Nothing OrElse sourceManager.DraggingRows.Count < 1)
+			If Not DropEventIsLocked Then
+				ProcessTargetItem(sourceManager, pt)
+				Return
+			End If
+		End Sub
+		Protected Overridable Sub ProcessTargetItem(ByVal sourceManager As DragDropManagerBase, ByVal pt As Point)
+			TargetItem = GetVisibleHitTestElement(pt)
+			If TargetItem Is Nothing Then
+				sourceManager.ViewInfo.DropTargetRow = Nothing
+				sourceManager.SetDropTargetType(DropTargetType.DataArea)
+				ShowDropMarker(ListBox, TableDragIndicatorPosition.None)
+				Return
+			End If
+			Dim position = Mouse.GetPosition(TargetItem)
+			Dim height As Double = TargetItem.ActualHeight
+			If position.Y < height / 2 Then
+				sourceManager.SetDropTargetType(DropTargetType.InsertRowsBefore)
+				ShowDropMarker(TargetItem, TableDragIndicatorPosition.Top)
+			Else
+				sourceManager.SetDropTargetType(DropTargetType.InsertRowsAfter)
+				ShowDropMarker(TargetItem, TableDragIndicatorPosition.Bottom)
+			End If
+			sourceManager.ViewInfo.DropTargetRow = TargetItem.Content
+		End Sub
+		Protected Overridable Function GetVisibleHitTestElement(ByVal pt As Point) As ListBoxEditItem
+			Dim result As New DragDropHitTestResult()
+			VisualTreeHelper.HitTest(ListBox, Nothing, New HitTestResultCallback(AddressOf result.CallBack), New PointHitTestParameters(pt))
+			Return result.Element
+		End Function
+		Protected Overrides Sub OnDrop(ByVal sourceManager As DragDropManagerBase, ByVal source As UIElement, ByVal pt As Point)
+			If DropEventIsLocked Then
+				Return
+			End If
+			Dim e As ListBoxDropEventArgs = RaiseDropEvent(sourceManager)
+			If Not e.Handled Then
+				If sourceManager.DraggingRows.Count > 0 AndAlso AllowDrop Then
+					ProcessTargetItem(e.SourceManager, pt)
+					Dim currentSource As IList = ItemsSource
+					Dim draggedFromSource As IList = e.SourceManager.GetSource(Nothing)
+					For Each obj As Object In e.DraggedRows
+						If TargetItem IsNot Nothing AndAlso obj Is TargetItem.Content Then
+							Continue For
+						End If
+						draggedFromSource.Remove(obj)
+						Select Case e.SourceManager.ViewInfo.DropTargetType
+							Case DropTargetType.DataArea
+								currentSource.Add(obj)
+							Case DropTargetType.InsertRowsAfter
+								currentSource.Insert(currentSource.IndexOf(TargetItem.Content) + 1, obj)
+							Case DropTargetType.InsertRowsBefore
+								currentSource.Insert(Math.Max(currentSource.IndexOf(TargetItem.Content), 0), obj)
+						End Select
+					Next obj
+					RaiseDroppedEvent(sourceManager, e.DraggedRows)
+				End If
+			End If
+			HideDropMarker()
+		End Sub
+		Protected Overrides ReadOnly Property ItemsSource() As IList
+			Get
+				If TypeOf ListBox.ItemsSource Is ICollectionView Then
+					Return TryCast(DirectCast(ListBox.ItemsSource, ICollectionView).SourceCollection, IList)
+				End If
+				Return TryCast(ListBox.ItemsSource, IList)
+			End Get
+		End Property
+	End Class
 End Namespace
