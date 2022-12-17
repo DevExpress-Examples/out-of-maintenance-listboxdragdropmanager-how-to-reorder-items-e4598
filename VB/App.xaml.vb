@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' ListBoxDragDropManager - How to reorder items
 ' 
 ' The current ListBoxDragDropManager version does not provide the capability to
@@ -21,25 +21,17 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E4598
-
-Imports System
-Imports System.Collections.Generic
-Imports System.Configuration
-Imports System.Data
-Imports System.Linq
 Imports System.Windows
-Imports System.Windows.Threading
-Imports DevExpress.Xpf.Core
 
 Namespace DXEditorsSample
-	''' <summary>
-	''' Interaction logic for App.xaml
-	''' </summary>
-	Partial Public Class App
-		Inherits Application
 
-		Public Sub New()
+    ''' <summary>
+    ''' Interaction logic for App.xaml
+    ''' </summary>
+    Public Partial Class App
+        Inherits Application
 
-		End Sub
-	End Class
+        Public Sub New()
+        End Sub
+    End Class
 End Namespace
