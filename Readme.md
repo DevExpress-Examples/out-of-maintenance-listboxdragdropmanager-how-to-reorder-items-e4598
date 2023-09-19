@@ -10,7 +10,7 @@
 * [MainWindow.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))
 * [MyListBoxDragDropManager.cs](./CS/MyListBoxDragDropManager.cs) (VB: [MyListBoxDragDropManager.vb](./VB/MyListBoxDragDropManager.vb))
 <!-- default file list end -->
-# ListBoxDragDropManager - How to reorder items
+# [Obsolete] ListBoxDragDropManager - How to reorder items
 
 
 <p>The current ListBoxDragDropManager version does not provide the capability to reorder items. This example demonstrates how to implement this functionality manually.</p>
